@@ -11,12 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
+// Route Untuk Halaman Depan
+Route::get('/', 'DepanController@Index');
+Route::get('/informasi', 'DepanController@Informasi');
+
+// TESTING AJA
 Route::get('/testing', 'UserController@Dashboard');
 Route::get('/testing/tipe', 'UserController@TipeKendaraan');
 Route::get('/testing/tipe/{id}/tipes.json', 'UserController@Tipe');
