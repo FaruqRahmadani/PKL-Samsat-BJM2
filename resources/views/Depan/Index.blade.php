@@ -23,21 +23,32 @@
               <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
               <li data-target="#myCarousel" data-slide-to="1"></li>
               <li data-target="#myCarousel" data-slide-to="2"></li>
+              <li data-target="#myCarousel" data-slide-to="3"></li>
+              <li data-target="#myCarousel" data-slide-to="4"></li>
             </ol>
 
             <!-- Wrapper for slides -->
             <div class="carousel-inner">
               <div class="item active">
-                <img src="http://cdn2.tstatic.net/banjarmasin/foto/bank/images/samsat-uppd-banjarmasin_20170630_103915.jpg" style="width: 100%; max-height:400px">
+                <img src="/Public-Depan/Image/Slide/1.jpg" style="width: 100%; max-height:400px">
               </div>
 
               <div class="item">
-                <img src="https://i.ytimg.com/vi/apDXA-KIcMs/maxresdefault.jpg" style="width: 100%; max-height:400px">
+                <img src="/Public-Depan/Image/Slide/2.jpg" style="width: 100%; max-height:400px">
               </div>
 
               <div class="item">
-                <img src="http://cdn2.tstatic.net/banjarmasin/foto/bank/images/samsat-uppd-banjarmasin_20170630_103915.jpg" style="width: 100%; max-height:400px">
+                <img src="/Public-Depan/Image/Slide/3.jpg" style="width: 100%; max-height:400px">
               </div>
+
+              <div class="item">
+                <img src="/Public-Depan/Image/Slide/4.jpg" style="width: 100%; max-height:400px">
+              </div>
+
+              <div class="item">
+                <img src="/Public-Depan/Image/Slide/5.jpg" style="width: 100%; max-height:400px">
+              </div>
+              
             </div>
 
             <!-- Left and right controls -->
