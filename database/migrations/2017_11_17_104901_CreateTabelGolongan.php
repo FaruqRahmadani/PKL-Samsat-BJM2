@@ -17,6 +17,7 @@ class CreateTabelGolongan extends Migration
           $table->increments('id');
           $table->string('golongan');
           $table->double('biaya_sw');
+          $table->double('biaya_adm');
           $table->timestamps();
       });
     }

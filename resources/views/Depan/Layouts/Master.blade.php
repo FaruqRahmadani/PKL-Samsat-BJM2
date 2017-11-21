@@ -103,7 +103,7 @@
             @else
               <div class="collapse navbar-collapse pull-right" id="navbar-collapse">
                 <ul class="nav navbar-nav">
-                  <li><a href="/login"><b>LOGIN</b></a></li>
+                  <li class="active"><a href="/login"><b>LOGIN</b></a></li>
                 </ul>
               </div>
             @endif
