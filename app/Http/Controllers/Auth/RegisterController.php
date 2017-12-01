@@ -27,7 +27,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/login';
 
     /**
      * Create a new controller instance.
@@ -39,6 +39,11 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+    public function showRegistrationForm()
+    {
+        return abort(404);
+    }
+
     /**
      * Get a validator for an incoming registration request.
      *
@@ -47,6 +52,7 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+      dd(bcrypt($data['password']));
         return Validator::make($data, [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',

@@ -15,8 +15,8 @@ class CreateTabelTipeKendaraan extends Migration
     {
       Schema::create('tipe_kendaraans', function (Blueprint $table) {
           $table->increments('id');
-          $table->integer('merk_kendaraans_id');
-          $table->integer('golongans_id');
+          $table->integer('merk_kendaraan_id');
+          $table->integer('golongan_id');
           $table->string('tipe');
           $table->timestamps();
       });

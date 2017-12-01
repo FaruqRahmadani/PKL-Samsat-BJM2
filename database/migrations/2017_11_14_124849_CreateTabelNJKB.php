@@ -15,8 +15,8 @@ class CreateTabelNJKB extends Migration
     {
       Schema::create('NJKBs', function (Blueprint $table) {
           $table->increments('id');
-          $table->integer('merk_kendaraans_id');
-          $table->integer('tipe_kendaraans_id');
+          $table->integer('merk_kendaraan_id');
+          $table->integer('tipe_kendaraan_id');
           $table->string('tahun_buat');
           $table->double('NJKB', 12,0);
           $table->double('bobot');

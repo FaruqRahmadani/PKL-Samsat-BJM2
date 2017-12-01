@@ -16,7 +16,9 @@ class CreateTabelGolongan extends Migration
       Schema::create('golongans', function (Blueprint $table) {
           $table->increments('id');
           $table->string('golongan');
+          $table->string('keterangan');
           $table->double('biaya_sw');
+          $table->double('biaya_adm');
           $table->timestamps();
       });
     }

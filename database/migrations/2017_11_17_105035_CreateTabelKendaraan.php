@@ -16,17 +16,16 @@ class CreateTabelKendaraan extends Migration
       Schema::create('kendaraans', function (Blueprint $table) {
           $table->increments('id');
           $table->string('noplat');
-          $table->string('noplat_lama');
+          $table->string('noplat_lama')->default('-');
           $table->string('no_ktp');
           $table->string('nama');
           $table->string('alamat');
           $table->string('no_rangka');
           $table->string('no_mesin');
           $table->date('masalaku');
-          $table->integer('daerah_samsats_id');
-          $table->integer('njkbs_id');
-          $table->integer('jenis_tnkbs_id');
-          $table->double('biaya_sw');
+          $table->integer('daerah_samsat_id');
+          $table->integer('njkb_id');
+          $table->integer('jenis_tnkb_id');
           $table->timestamps();
       });
     }

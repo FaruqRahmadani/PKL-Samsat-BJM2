@@ -5,6 +5,7 @@
 </head>
 
 <select id="merk" name="merk">
+  <option value="">Pilih Merk Kendaraan Dahulu</option>
   @foreach ($MerkKendaraan as $DataMerkKendaraan)
     <option value="{{$DataMerkKendaraan->id}}">{{$DataMerkKendaraan->merk}}</option>
   @endforeach
@@ -17,8 +18,9 @@
 <script>
     $('#merk').change(function()
     {
-        $.get('/testing/tipe/' + this.value + '/tipes.json', function(tipes)
+        $.get('/testing/tipe/'+this.value+'/tipes.json', function(tipes)
         {
+          alert(this.value);
             var $tipe = $('#tipe');
 
             $tipe.find('option').remove().end();
