@@ -29,7 +29,14 @@
             <div class="form-group">
               <label class="col-lg-3 control-label">Nama Golongan</label>
               <div class="col-lg-8">
-                <input class="form-control" type="text" name="NamaGolongan" value="{{old('NamaGolongan')}}" required pattern="[a-zA-Z0-9]+.{0,}" title="Minimal 1 Karakter">
+                <input class="form-control" type="text" name="NamaGolongan" value="{{old('NamaGolongan')}}" required pattern="[a-zA-Z0-9]+.{0,}" title="Minimal 1 Karakter" autofocus>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-lg-3 control-label">Keterangan</label>
+              <div class="col-lg-8">
+                <input class="form-control" type="text" name="Keterangan" value="{{old('Keterangan')}}" required pattern="[a-zA-Z0-9]+.{0,}" title="Minimal 1 Karakter" autofocus>
               </div>
             </div>
 

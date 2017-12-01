@@ -26,7 +26,7 @@
       <div class="box box-success">
         <div class="box-header">
           <div class="col-md-2">
-            <a href="/tambah-golongan-kendaraan">
+            <a href="/golongan-kendaraan/tambah">
               <button type="button" class="btn btn-block btn-info">
                 <i class="fa fa-plus"></i> <b>Tambah Data</b>
               </button>
@@ -43,8 +43,10 @@
             <tr>
               <th>#</th>
               <th>Nama Golongan</th>
+              <th>Keterangan</th>
               <th>Santunan Wajib</th>
               <th>Biaya Admin</th>
+              <th>Jumlah Tipe Kendaraan</th>
               <th style="text-align:center; max-width:50%;">Ubah</th>
               <th style="text-align:center; max-width:50%;">Hapus</th>
             </tr>
@@ -54,13 +56,16 @@
                 <tr>
                   <td>{{$no+=1}}</td>
                   <td>{{$DataGolongan->golongan}}</td>
+                  <td>{{$DataGolongan->keterangan}}</td>
                   <td>Rp. {{number_format($DataGolongan->biaya_sw)}}</td>
                   <td>Rp. {{number_format($DataGolongan->biaya_adm)}}</td>
+                  <td>{{count($DataGolongan->TipeKendaraan)}}</td>
                   <td class="col-md-2">
                       <button type="button" class="btn btn-block btn-primary btn-flat" onclick="Ubah('{{Crypt::encryptString($DataGolongan->id)}}','{{$DataGolongan->golongan}}')"><b><i class="fa fa-edit"></i> Ubah</b></button>
                   </td>
                   <td class="col-md-2">
-                      <button type="button" class="btn btn-block btn-danger btn-flat" onclick="Hapus('{{Crypt::encryptString($DataGolongan->id)}}','{{$DataGolongan->golongan}}')"><b><i class="fa fa-trash-o"></i> Hapus</b></button>
+                      <button type="button" class="btn btn-block btn-danger btn-flat"
+                              onclick="{{count($DataGolongan->TipeKendaraan) != 0 ? 'cantHapus' : 'Hapus'}}('{{Crypt::encryptString($DataGolongan->id)}}','{{$DataGolongan->golongan}}')"><b><i class="fa fa-trash-o"></i> Hapus</b></button>
                   </td>
                 </tr>
               @endforeach
@@ -98,7 +103,7 @@
       if (hapus) {
         swal({
           title  : "Hapus",
-          text   : "Anda Akan di Arahkan ke Halaman Ubah Data Golongan '"+golongan+"'",
+          text   : "Data Golongan Kendaraan '"+golongan+"' Akan di Hapus",
           icon   : "info",
           timer  : 2500,
         });
@@ -112,5 +117,14 @@
         })
       }
     });
+  }
+
+  function cantHapus(id,golongan)
+  {
+    swal({
+      title   : "Hapus",
+      text    : "Data Golongan '"+golongan+"' Tidak dapat di Hapus Karena Ada Data Tipe Kendaraan",
+      icon    : "warning",
+    })
   }
 </script>

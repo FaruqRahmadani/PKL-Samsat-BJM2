@@ -29,21 +29,28 @@
             <div class="form-group">
               <label class="col-lg-3 control-label">Nama Golongan</label>
               <div class="col-lg-8">
-                <input class="form-control" type="text" name="NamaGolongan" value="{{$Golongan->golongan}}" required pattern="[a-zA-Z0-9]+.{0,}" title="Minimal 1 Karakter">
+                <input class="form-control" type="text" name="NamaGolongan" value="{{$Golongan->golongan}}" required pattern="[a-zA-Z0-9]+.{0,}" title="Minimal 1 Karakter" autofocus>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-lg-3 control-label">Keterangan</label>
+              <div class="col-lg-8">
+                <input class="form-control" type="text" name="Keterangan" value="{{$Golongan->keterangan}}" required pattern="[a-zA-Z0-9]+.{0,}" title="Minimal 1 Karakter" autofocus>
               </div>
             </div>
 
             <div class="form-group">
               <label class="col-lg-3 control-label">Biaya Santunan Wajib Jasa Raharja</label>
               <div class="col-lg-8">
-                <input class="form-control" type="number" name="SantunanWajib" value="{{$Golongan->biaya_sw}}" required>
+                <input class="form-control" type="number" name="SantunanWajib" value="{{$Golongan->biaya_sw}}" required  min=0>
               </div>
             </div>
 
             <div class="form-group">
               <label class="col-lg-3 control-label">Biaya Administrasi</label>
               <div class="col-lg-8">
-                <input class="form-control" type="number" name="BiayaAdmin" value="{{$Golongan->biaya_adm}}" required>
+                <input class="form-control" type="number" name="BiayaAdmin" value="{{$Golongan->biaya_adm}}" required  min=0>
               </div>
             </div>
 
