@@ -421,6 +421,7 @@
           </a>
         </li>
         <li>
+<<<<<<< HEAD
           <a href="/laporan-registrasi-batal">
             <i class="fa fa-th"></i> <span>Registrasi Batal</span>
           </a>
@@ -428,6 +429,15 @@
         <li>
           <a href="/laporan-kendaraan">
             <i class="fa fa-th"></i> <span>Kendaraan</span>
+=======
+          <a href="/laporan-kendaraan-bayar-pajak">
+            <i class="fa fa-th"></i> <span>Kendaraan Bayar Pajak</span>
+          </a>
+        </li>
+        <li>
+          <a href="/laporan-registrasi-batal">
+            <i class="fa fa-th"></i> <span>Registrasi Batal</span>
+>>>>>>> ea2daf11df1dea958e3d4e63eb5e25396949c572
           </a>
         </li>
 

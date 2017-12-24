@@ -74,7 +74,10 @@ Route::group(['middleware' => 'User'], function(){
   Route::POST('/njkb-kendaraan/tambah', 'UserController@storeTambahNJKB');
   Route::get('/njkb-kendaraan/{id}/edit', 'UserController@EditNJKB');
   Route::POST('/njkb-kendaraan/{id}/edit', 'UserController@storeEditNJKB');
+<<<<<<< HEAD
   Route::get('/njkb-kendaraan/{id}/hapus', 'UserController@HapusNJKB');
+=======
+>>>>>>> ea2daf11df1dea958e3d4e63eb5e25396949c572
 
   // Daerah SAMSAT
   Route::get('/daerah-uppd', 'UserController@DataDaerahUPPD');
@@ -115,10 +118,14 @@ Route::group(['middleware' => 'User'], function(){
   Route::POST('/laporan-registrasi-batal', 'UserController@LaporanRegistrasiBatalFilter');
   Route::get('/laporan-registrasi-batal/print', 'UserController@PrintLaporanRegistrasiBatal');
   Route::get('/laporan-registrasi-batal/{TanggalAwal}/{TanggalAkhir}/print', 'UserController@PrintLaporanRegistrasiBatalFilter');
+<<<<<<< HEAD
   Route::get('/laporan-kendaraan', 'UserController@LaporanKendaraan');
   Route::POST('/laporan-kendaraan', 'UserController@LaporanKendaraanFilter');
   Route::get('/laporan-kendaraan/print', 'UserController@PrintLaporanKendaraan');
   Route::get('/laporan-kendaraan/{idGolongan}/{idMerk}/print', 'UserController@PrintLaporanKendaraanFilter');
+=======
+
+>>>>>>> ea2daf11df1dea958e3d4e63eb5e25396949c572
 
 
 
