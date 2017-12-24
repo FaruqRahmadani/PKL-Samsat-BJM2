@@ -17,12 +17,9 @@ class Njkb extends Model
   {
     return $this->belongsTo('App\MerkKendaraan');
   }
-<<<<<<< HEAD
 
   public function Kendaraan()
   {
     return $this->hasMany('App\Kendaraan');
   }
-=======
->>>>>>> ea2daf11df1dea958e3d4e63eb5e25396949c572
 }

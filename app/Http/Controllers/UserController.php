@@ -22,7 +22,9 @@ class UserController extends Controller
 {
   public function Dashboard()
   {
-    return view('User.Dashboard');
+    $Transaksi = Transaksi::whereDate('created_at', Carbon::now()->format('Y-m-d'))->get();
+
+    return view('User.Dashboard', ['Transaksi' => $Transaksi]);
   }
 
   public function DataGolonganKendaraan()
@@ -349,11 +351,7 @@ class UserController extends Controller
 
   public function DataNJKB()
   {
-<<<<<<< HEAD
     $NJKB = NJKB::with('MerkKendaraan','TipeKendaraan','Kendaraan')
-=======
-    $NJKB = NJKB::with('MerkKendaraan','TipeKendaraan')
->>>>>>> ea2daf11df1dea958e3d4e63eb5e25396949c572
                 ->get();
 
     return view('User.DataNJKB', ['NJKB' => $NJKB]);
@@ -408,7 +406,7 @@ class UserController extends Controller
     return redirect('/njkb-kendaraan')->with('success', 'Data NJKB Berhasil di Ubah');
   }
 
-<<<<<<< HEAD
+
   public function HapusNJKB($id)
   {
     $ids  = Crypt::decryptString($id);
@@ -420,8 +418,6 @@ class UserController extends Controller
 
   }
 
-=======
->>>>>>> ea2daf11df1dea958e3d4e63eb5e25396949c572
   public function DataDaerahUPPD()
   {
     $DaerahUPPD = DaerahSamsat::all();
@@ -842,7 +838,7 @@ class UserController extends Controller
     return $pdf->stream('Laporan Registrasi Batal.pdf', ['Attachment' => 0]);
   }
 
-<<<<<<< HEAD
+
   public function LaporanKendaraan()
   {
     $Kendaraan = Kendaraan::all();
@@ -964,11 +960,6 @@ class UserController extends Controller
     $pdf->setPaper('a4', 'landscape');
     return $pdf->stream('Laporan Kendaraan.pdf', ['Attachment' => 0]);
   }
-=======
->>>>>>> ea2daf11df1dea958e3d4e63eb5e25396949c572
-
-
-
 
   public function InfoKendaraan()
   {
@@ -998,7 +989,7 @@ class UserController extends Controller
   public function Tipe($id)
   {
     $Tipe = TipeKendaraan::where('merk_kendaraan_id', $id)->get();
-<<<<<<< HEAD
+
     return $Tipe;
   }
 
@@ -1010,19 +1001,6 @@ class UserController extends Controller
     return $Tipe;
   }
 
-=======
-    return $Tipe;
-  }
-
-  public function TipeGolongan($idMerk, $idGol)
-  {
-    $Tipe = TipeKendaraan::where('merk_kendaraan_id', $idMerk)
-                         ->where('golongan_id', $idGol)
-                         ->get();
-    return $Tipe;
-  }
-
->>>>>>> ea2daf11df1dea958e3d4e63eb5e25396949c572
   public function TahunBuat($idMerk, $idTipe)
   {
     $NJKB = NJKB::where('merk_kendaraan_id', $idMerk)
