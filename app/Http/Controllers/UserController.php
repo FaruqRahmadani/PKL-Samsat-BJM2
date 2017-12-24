@@ -22,7 +22,9 @@ class UserController extends Controller
 {
   public function Dashboard()
   {
-    return view('User.Dashboard');
+    $Transaksi = Transaksi::whereDate('created_at', Carbon::now()->format('Y-m-d'))->get();
+
+    return view('User.Dashboard', ['Transaksi' => $Transaksi]);
   }
 
   public function DataGolonganKendaraan()
@@ -349,7 +351,7 @@ class UserController extends Controller
 
   public function DataNJKB()
   {
-    $NJKB = NJKB::with('MerkKendaraan','TipeKendaraan')
+    $NJKB = NJKB::with('MerkKendaraan','TipeKendaraan','Kendaraan')
                 ->get();
 
     return view('User.DataNJKB', ['NJKB' => $NJKB]);
@@ -402,6 +404,18 @@ class UserController extends Controller
     $NJKB->save();
 
     return redirect('/njkb-kendaraan')->with('success', 'Data NJKB Berhasil di Ubah');
+  }
+
+
+  public function HapusNJKB($id)
+  {
+    $ids  = Crypt::decryptString($id);
+    $NJKB = NJKB::find($ids);
+
+    $NJKB->delete();
+
+    return redirect('/njkb-kendaraan')->with('success', 'Data NJKB Berhasil di Hapus');
+
   }
 
   public function DataDaerahUPPD()
@@ -825,8 +839,127 @@ class UserController extends Controller
   }
 
 
+  public function LaporanKendaraan()
+  {
+    $Kendaraan = Kendaraan::all();
+
+    $Golongan      = Golongan::all();
+    $MerkKendaraan = MerkKendaraan::all();
+
+    return view('User.LaporanKendaraan', ['Kendaraan' => $Kendaraan, 'Golongan' => $Golongan, 'MerkKendaraan' => $MerkKendaraan]);
+  }
+
+  public function LaporanKendaraanFilter(Request $request)
+  {
+    // GOLONGAN !!!!
+    if ($request->idGolongan != '0') {
+      $TipeKendaraan = TipeKendaraan::where('golongan_id', $request->idGolongan)
+                                    ->get();
+    } else {
+      $TipeKendaraan = TipeKendaraan::all();
+    }
+
+    $IndexIdTipeKendaraan = 0;
+    if (count($TipeKendaraan) == 0) {
+      $IdTipeKendaraan[1] = '01012011';
+    }else{
+      foreach ($TipeKendaraan as $DataTipeKendaraan) {
+        $IndexIdTipeKendaraan += 1;
+        $IdTipeKendaraan[$IndexIdTipeKendaraan] = $DataTipeKendaraan->id;
+      }
+    }
+
+    if ($request->idMerk != '0') {
+      $NJKB = NJKB::whereIn('tipe_kendaraan_id', $IdTipeKendaraan)
+                  ->where('merk_kendaraan_id', $request->idMerk)
+                  ->get();
+    } else {
+      $NJKB = NJKB::whereIn('tipe_kendaraan_id', $IdTipeKendaraan)
+                  ->get();
+    }
+
+    $IndexIdNJKB = 0;
+    if (count($NJKB) == 0) {
+      $IdNJKB[1] = '01012011';
+    } else {
+      foreach ($NJKB as $DataNJKB) {
+        $IndexIdNJKB += 1;
+        $IdNJKB[$IndexIdNJKB] = $DataNJKB->id;
+      }
+    }
 
 
+    $Golongan      = Golongan::all();
+    $MerkKendaraan = MerkKendaraan::all();
+
+    $Kendaraan = Kendaraan::whereIn('NJKB_id', $IdNJKB)
+                          ->get();
+
+    return view('User.LaporanKendaraanFilter', ['Kendaraan' => $Kendaraan, 'Golongan' => $Golongan, 'MerkKendaraan' => $MerkKendaraan, 'idGolongan' => $request->idGolongan, 'idMerk' => $request->idMerk]);
+  }
+
+  public function PrintLaporanKendaraan()
+  {
+    $Kendaraan = Kendaraan::all();
+
+    // dd($Kendaraan->first()->NJKB->TipeKendaraan->tipe);
+
+    $pdf = PDF::loadView('Laporan.Kendaraan', ['Kendaraan' => $Kendaraan]);
+    $pdf->setPaper('a4', 'landscape');
+    return $pdf->stream('Laporan Kendaraan.pdf', ['Attachment' => 0]);
+  }
+
+  public function PrintLaporanKendaraanFilter($idGolongan, $idMerk)
+  {
+    // GOLONGAN !!!!
+    if ($idGolongan != '0') {
+      $TipeKendaraan = TipeKendaraan::where('golongan_id', $idGolongan)
+                                    ->get();
+    } else {
+      $TipeKendaraan = TipeKendaraan::all();
+    }
+
+    $IndexIdTipeKendaraan = 0;
+    if (count($TipeKendaraan) == 0) {
+      $IdTipeKendaraan[1] = '01012011';
+    }else{
+      foreach ($TipeKendaraan as $DataTipeKendaraan) {
+        $IndexIdTipeKendaraan += 1;
+        $IdTipeKendaraan[$IndexIdTipeKendaraan] = $DataTipeKendaraan->id;
+      }
+    }
+
+    if ($idMerk != '0') {
+      $NJKB = NJKB::whereIn('tipe_kendaraan_id', $IdTipeKendaraan)
+                  ->where('merk_kendaraan_id', $idMerk)
+                  ->get();
+    } else {
+      $NJKB = NJKB::whereIn('tipe_kendaraan_id', $IdTipeKendaraan)
+                  ->get();
+    }
+
+    $IndexIdNJKB = 0;
+    if (count($NJKB) == 0) {
+      $IdNJKB[1] = '01012011';
+    } else {
+      foreach ($NJKB as $DataNJKB) {
+        $IndexIdNJKB += 1;
+        $IdNJKB[$IndexIdNJKB] = $DataNJKB->id;
+      }
+    }
+
+
+    $Golongan      = Golongan::all();
+    $MerkKendaraan = MerkKendaraan::all();
+
+    $Kendaraan = Kendaraan::whereIn('NJKB_id', $IdNJKB)
+                          ->get();
+
+    //
+    $pdf = PDF::loadView('Laporan.KendaraanFilter', ['Kendaraan' => $Kendaraan, 'idGolongan' => $idGolongan, 'idMerk' => $idMerk]);
+    $pdf->setPaper('a4', 'landscape');
+    return $pdf->stream('Laporan Kendaraan.pdf', ['Attachment' => 0]);
+  }
 
   public function InfoKendaraan()
   {
@@ -856,6 +989,7 @@ class UserController extends Controller
   public function Tipe($id)
   {
     $Tipe = TipeKendaraan::where('merk_kendaraan_id', $id)->get();
+
     return $Tipe;
   }
 

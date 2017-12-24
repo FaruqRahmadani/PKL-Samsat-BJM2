@@ -17,4 +17,9 @@ class Njkb extends Model
   {
     return $this->belongsTo('App\MerkKendaraan');
   }
+
+  public function Kendaraan()
+  {
+    return $this->hasMany('App\Kendaraan');
+  }
 }

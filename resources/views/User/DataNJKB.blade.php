@@ -63,13 +63,13 @@
                   <td>Rp. {{number_format($DataNJKB->NJKB)}}</td>
                   <td>{{number_format($DataNJKB->bobot, 3)}}</td>
                   <td>Rp. {{number_format($DataNJKB->NJKB*$DataNJKB->bobot)}}</td>
-                  <td>Belum Becoding</td>
+                  <td>{{count($DataNJKB->Kendaraan)}}</td>
                   <td class="col-md-2">
                       <button type="button" class="btn btn-block btn-primary btn-flat" onclick="Ubah('{{Crypt::encryptString($DataNJKB->id)}}','{{$DataNJKB->TipeKendaraan->tipe}}')"><b><i class="fa fa-edit"></i> Ubah</b></button>
                   </td>
                   <td class="col-md-2">
                       <button type="button" class="btn btn-block btn-danger btn-flat"
-                              onclick="{{count($DataNJKB->TipeKendaraan) != 0 ? 'cantHapus' : 'Hapus'}}('{{Crypt::encryptString($DataNJKB->id)}}','{{$DataNJKB->TipeKendaraan->tipe}}')"><b><i class="fa fa-trash-o"></i> Hapus</b></button>
+                              onclick="{{count($DataNJKB->Kendaraan) != 0 ? 'cantHapus' : 'Hapus'}}('{{Crypt::encryptString($DataNJKB->id)}}','{{$DataNJKB->TipeKendaraan->tipe}}')"><b><i class="fa fa-trash-o"></i> Hapus</b></button>
                   </td>
                 </tr>
               @endforeach
