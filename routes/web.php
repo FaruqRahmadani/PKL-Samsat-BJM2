@@ -143,7 +143,9 @@ Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
 //PASSWORD
 // Route::get('/password', dd(bcrypt('123456')));
-
+Route::get('/asd', function () {
+  return view('User.Blank');
+});
 
 // TESTING AJA
 Route::get('/testing/tipe', 'UserController@TipeKendaraan');
