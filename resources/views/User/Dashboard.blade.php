@@ -19,7 +19,7 @@
               <p>Berkas di Pelayanan</p>
             </div>
             <div class="icon">
-              <i class="ion ion-bag"></i>
+              <i class="fa fa-file"></i>
             </div>
           </div>
         </div>
@@ -30,7 +30,7 @@
               <p>Berkas di Jasa Raharja</p>
             </div>
             <div class="icon">
-              <i class="ion ion-stats-bars"></i>
+              <i class="fa fa-file"></i>
             </div>
           </div>
         </div>
@@ -41,7 +41,7 @@
               <p>Berkas di Kasir</p>
             </div>
             <div class="icon">
-              <i class="ion ion-person-add"></i>
+              <i class="fa fa-file"></i>
             </div>
           </div>
         </div>
@@ -52,7 +52,7 @@
               <p>Berkas di Master</p>
             </div>
             <div class="icon">
-              <i class="ion ion-pie-graph"></i>
+              <i class="fa fa-file"></i>
             </div>
           </div>
         </div>
