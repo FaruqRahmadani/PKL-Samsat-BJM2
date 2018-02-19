@@ -15,6 +15,10 @@
 //     return view('welcome');
 // });
 
+// Route::get('/asd', function () {
+//     dd(bcrypt('123456'));
+// });
+
 Auth::routes();
 
 // Route Untuk Halaman Depan
@@ -138,7 +142,7 @@ Route::group(['middleware' => 'User'], function(){
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
 //PASSWORD
-Route::get('/password', 'UserController@password');
+// Route::get('/password', dd(bcrypt('123456')));
 
 
 // TESTING AJA
