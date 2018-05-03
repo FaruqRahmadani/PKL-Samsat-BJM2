@@ -793,7 +793,7 @@ class UserController extends Controller
   public function LaporanRegistrasiBatal()
   {
     $Transaksi = Transaksi::with('Kendaraan')
-                          ->where('status', '5')
+                          ->where('status', '6')
                           ->get();
 
     //
